@@ -4,7 +4,7 @@
 #include <device_launch_parameters.h>
 #include <stdexcept>
 
-#if defined(__JETBRAINS_IDE__)
+#if defined(__JETBRAINS_IDE__) || defined(__INTELLISENSE__)
 
 #define __global__
 #define __device__

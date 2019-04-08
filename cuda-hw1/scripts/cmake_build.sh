@@ -11,17 +11,18 @@ source ${DIR}/cmakeSetup.sh
 
 main() {
 
-mkdir -p ${buildDir}
-cd ${buildDir}
-
-local ${FUNCNAME[0]}_cmakePath=""
-cmakeSetup cmakePath ${cmakeVersion} ${skipDownload}
-
-# Build 
-${cmakePath} .. \
-  -DCMAKE_BUILD_TYPE=Release
-cmake --build .
-cp cuda_hw1 ../hw1
+  mkdir -p ${buildDir}
+  cd ${buildDir}
+  
+  local cmakePath=""
+  cmakeSetup cmakePath ${cmakeVersion} ${skipDownload}
+  
+  # Build 
+  ${cmakePath} .. \
+    -DCMAKE_BUILD_TYPE=Release
+  cmake --build .
+  cp src/cuda_impl/cuda_hw1 ../cuda_hw1
+  cp src/openmp_impl/openmp_hw1 ../openmp_hw1
 
 }
 

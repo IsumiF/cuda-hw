@@ -19,7 +19,9 @@ main() {
   
   # Build 
   ${cmakePath} .. \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_COMPILER=/home/jovyan/gcc6/bin/gcc \
+    -DCMAKE_CXX_COMPILER=/home/jovyan/gcc6/bin/g++
   cmake --build .
   cp src/cuda_impl/cuda_hw1 ../cuda_hw1
   cp src/openmp_impl/openmp_hw1 ../openmp_hw1

@@ -1,3 +1,8 @@
+/**
+ * 姓名：丰泽霖
+ * 文件说明：用CUDA计算二维高斯函数在某一定义域上的值
+ */
+
 #include "cuda_helper.h"
 
 #include <iostream>
@@ -6,6 +11,9 @@
 #include <cstdio>
 #include <chrono>
 
+/**
+ * Kernel function to compute gause function in a domain.
+ */
 __global__
 void gause(float *arr, size_t width, size_t height, int shift, float sigma) {
     size_t idx = threadIdx.x + blockIdx.x * blockDim.x;
@@ -22,6 +30,9 @@ void gause(float *arr, size_t width, size_t height, int shift, float sigma) {
     }
 }
 
+/**
+ * Get current time in millis (only used for profiling)
+ */
 int64_t currentTimeMillis() {
     using namespace std::chrono;
     milliseconds ms = duration_cast<milliseconds>(
@@ -30,6 +41,9 @@ int64_t currentTimeMillis() {
     return ms.count();
 }
 
+/**
+ * Get the time required to execute a function
+ */
 template<typename F>
 int64_t timeElapsed(F f) {
     int64_t start = currentTimeMillis();
@@ -37,6 +51,9 @@ int64_t timeElapsed(F f) {
     return currentTimeMillis() - start;
 }
 
+/**
+ * Div x by y, rounding up.
+ */
 template<typename T>
 T divup(T x, T y) {
     return (x + y - 1) / y;

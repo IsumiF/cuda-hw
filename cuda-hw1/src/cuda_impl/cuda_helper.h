@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * 姓名：丰泽霖
+ * 文件说明：一些CUDA辅助函数
+ */
+
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 #include <stdexcept>
@@ -10,6 +15,9 @@
 #define __device__
 #define __host__
 
+/**
+ * To workaround IDE's intellisense invalid error
+ */
 #define DEVICE_CALL(f, m, n) f
 
 #else
@@ -28,6 +36,9 @@ void throwErr(cudaError_t err);
 
 }
 
+/**
+ * Check CUDA error code. Prints error message and quits on error.
+ */
 inline
 void checkErr(cudaError_t err) {
     if (err != cudaSuccess) {
@@ -44,6 +55,9 @@ private:
     cudaError_t errCode;
 };
 
+/**
+ * Check CUDA error code, and convert it to exception on error.
+ */
 inline
 void throwErr(cudaError_t err) {
     if (err != cudaSuccess) {

@@ -1,3 +1,8 @@
+/**
+ * 姓名：丰泽霖
+ * 文件说明：用OpenMP并行计算二维高斯函数
+ */
+
 #include <iostream>
 #include <omp.h>
 #include <cmath>
@@ -5,12 +10,18 @@
 
 namespace {
 
+/**
+ * Compute gause function at a specific value
+ */
 inline
 float gause2D(int x, int y, float sigma) {
     return static_cast<float>(std::exp(-(x * x + y * y) / (2 * (sigma * sigma))) *
                               (1.0f / (sigma * std::sqrt(2 * M_PI))));
 }
 
+/**
+ * Compute gause function in a domain parallelly
+ */
 void gauseParallel(std::vector<float> &result, int width, int height, int shift) {
     int threadCount = omp_get_max_threads();
     int taskCount = width * height;

@@ -1,3 +1,8 @@
+/**
+ * 姓名：丰泽霖
+ * 文件说明：CUDA辅助函数的实现
+ */
+
 #include "cuda_helper.h"
 #include <cstdlib>
 #include <iostream>
